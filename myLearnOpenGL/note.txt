@@ -1,0 +1,8 @@
+配置属性->VC++目录->包含目录 
+..\..\Libraries\includes;
+
+配置属性->VC++目录->库目录 
+..\..\Libraries\libs;
+
+链接器->输入->附加依赖项
+glew32s.lib;opengl32.lib;glfw3.lib;

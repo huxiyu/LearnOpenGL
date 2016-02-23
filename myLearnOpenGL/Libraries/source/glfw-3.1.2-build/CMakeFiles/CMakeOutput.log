@@ -1,0 +1,120 @@
+The system is: Windows - 6.1.7601 - x86
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler:  
+Build flags: 
+Id flags: 
+
+The output was:
+0
+Microsoft(R) 生成引擎版本 4.0.30319.17929
+[Microsoft .NET Framework 版本 4.0.30319.17929]
+版权所有 (C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2016/2/23 11:21:15。
+节点 1 上的项目“G:\develop\github\LearnOpenGL\mycode\tools\glfw-3.1.2-build\CMakeFiles\3.4.1\CompilerIdC\CompilerIdC.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“Debug\”。
+InitializeBuildStatus:
+  正在创建“Debug\CompilerIdC.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /nologo /W0 /WX- /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:queue CMakeCCompilerId.c
+  CMakeCCompilerId.c
+Link:
+  C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCCompilerId.obj
+  CompilerIdC.vcxproj -> G:\develop\github\LearnOpenGL\mycode\tools\glfw-3.1.2-build\CMakeFiles\3.4.1\CompilerIdC\.\CompilerIdC.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_C_COMPILER=C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\cl.exe
+FinalizeBuildStatus:
+  正在删除文件“Debug\CompilerIdC.unsuccessfulbuild”。
+  正在对“Debug\CompilerIdC.lastbuildstate”执行 Touch 任务。
+已完成生成项目“G:\develop\github\LearnOpenGL\mycode\tools\glfw-3.1.2-build\CMakeFiles\3.4.1\CompilerIdC\CompilerIdC.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.86
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+
+The C compiler identification is MSVC, found in "G:/develop/github/LearnOpenGL/mycode/tools/glfw-3.1.2-build/CMakeFiles/3.4.1/CompilerIdC/CompilerIdC.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: G:/develop/github/LearnOpenGL/mycode/tools/glfw-3.1.2-build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe" "cmTC_23c32.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=11.0"
+Microsoft(R) 生成引擎版本 4.0.30319.17929
+[Microsoft .NET Framework 版本 4.0.30319.17929]
+版权所有 (C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2016/2/23 11:21:18。
+节点 1 上的项目“G:\develop\github\LearnOpenGL\mycode\tools\glfw-3.1.2-build\CMakeFiles\CMakeTmp\cmTC_23c32.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_23c32.dir\Debug\”。
+  正在创建目录“G:\develop\github\LearnOpenGL\mycode\tools\glfw-3.1.2-build\CMakeFiles\CMakeTmp\Debug\”。
+InitializeBuildStatus:
+  正在创建“cmTC_23c32.dir\Debug\cmTC_23c32.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_23c32.dir\Debug\\" /Fd"cmTC_23c32.dir\Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:queue "G:\develop\github\LearnOpenGL\mycode\tools\glfw-3.1.2-build\CMakeFiles\CMakeTmp\testCCompiler.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 17.00.50727.1 版版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_23c32.dir\Debug\\" /Fd"cmTC_23c32.dir\Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:queue "G:\develop\github\LearnOpenGL\mycode\tools\glfw-3.1.2-build\CMakeFiles\CMakeTmp\testCCompiler.c"
+  
+  testCCompiler.c
+Link:
+  C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"G:\develop\github\LearnOpenGL\mycode\tools\glfw-3.1.2-build\CMakeFiles\CMakeTmp\Debug\cmTC_23c32.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:/develop/github/LearnOpenGL/mycode/tools/glfw-3.1.2-build/CMakeFiles/CMakeTmp/Debug/cmTC_23c32.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:/develop/github/LearnOpenGL/mycode/tools/glfw-3.1.2-build/CMakeFiles/CMakeTmp/Debug/cmTC_23c32.lib" /MACHINE:X86 /SAFESEH  /machine:X86 /debug cmTC_23c32.dir\Debug\testCCompiler.obj
+  cmTC_23c32.vcxproj -> G:\develop\github\LearnOpenGL\mycode\tools\glfw-3.1.2-build\CMakeFiles\CMakeTmp\Debug\cmTC_23c32.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_23c32.dir\Debug\cmTC_23c32.unsuccessfulbuild”。
+  正在对“cmTC_23c32.dir\Debug\cmTC_23c32.lastbuildstate”执行 Touch 任务。
+已完成生成项目“G:\develop\github\LearnOpenGL\mycode\tools\glfw-3.1.2-build\CMakeFiles\CMakeTmp\cmTC_23c32.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.12
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: G:/develop/github/LearnOpenGL/mycode/tools/glfw-3.1.2-build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe" "cmTC_e7fff.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=11.0"
+Microsoft(R) 生成引擎版本 4.0.30319.17929
+[Microsoft .NET Framework 版本 4.0.30319.17929]
+版权所有 (C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2016/2/23 11:21:19。
+节点 1 上的项目“G:\develop\github\LearnOpenGL\mycode\tools\glfw-3.1.2-build\CMakeFiles\CMakeTmp\cmTC_e7fff.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_e7fff.dir\Debug\”。
+  正在创建目录“G:\develop\github\LearnOpenGL\mycode\tools\glfw-3.1.2-build\CMakeFiles\CMakeTmp\Debug\”。
+InitializeBuildStatus:
+  正在创建“cmTC_e7fff.dir\Debug\cmTC_e7fff.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_e7fff.dir\Debug\\" /Fd"cmTC_e7fff.dir\Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:queue "D:\Software\CMake\share\cmake-3.4\Modules\CMakeCCompilerABI.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 17.00.50727.1 版版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_e7fff.dir\Debug\\" /Fd"cmTC_e7fff.dir\Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:queue "D:\Software\CMake\share\cmake-3.4\Modules\CMakeCCompilerABI.c"
+  
+  CMakeCCompilerABI.c
+Link:
+  C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"G:\develop\github\LearnOpenGL\mycode\tools\glfw-3.1.2-build\CMakeFiles\CMakeTmp\Debug\cmTC_e7fff.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:/develop/github/LearnOpenGL/mycode/tools/glfw-3.1.2-build/CMakeFiles/CMakeTmp/Debug/cmTC_e7fff.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:/develop/github/LearnOpenGL/mycode/tools/glfw-3.1.2-build/CMakeFiles/CMakeTmp/Debug/cmTC_e7fff.lib" /MACHINE:X86 /SAFESEH  /machine:X86 /debug cmTC_e7fff.dir\Debug\CMakeCCompilerABI.obj
+  cmTC_e7fff.vcxproj -> G:\develop\github\LearnOpenGL\mycode\tools\glfw-3.1.2-build\CMakeFiles\CMakeTmp\Debug\cmTC_e7fff.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_e7fff.dir\Debug\cmTC_e7fff.unsuccessfulbuild”。
+  正在对“cmTC_e7fff.dir\Debug\cmTC_e7fff.lastbuildstate”执行 Touch 任务。
+已完成生成项目“G:\develop\github\LearnOpenGL\mycode\tools\glfw-3.1.2-build\CMakeFiles\CMakeTmp\cmTC_e7fff.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.78
+
+
