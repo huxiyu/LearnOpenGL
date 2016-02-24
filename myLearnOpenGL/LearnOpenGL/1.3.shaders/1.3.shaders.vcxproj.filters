@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="hellowindow.cpp">
+    <ClCompile Include="shaders-using-object.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
