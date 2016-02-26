@@ -7,6 +7,9 @@
 // GLFW
 #include <GLFW/glfw3.h>
 
+// 其他 头文件
+#include <learnopengl\shader.h>
+
 // Function prototypes
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 
@@ -15,6 +18,9 @@ void uniformTest();
 
 //  2. colorFill
 void colorFill();
+
+// 3. ourShader
+void ourShader();
 
 // GLFW window
 GLFWwindow* window;
@@ -42,7 +48,6 @@ const GLchar* fragmentShaderSource1 =
 	"{\n"
 	"color = ourColor;\n"
 	"}\0";
-
 
 // Shaders2
 const GLchar* vertexShaderSource2 = 
@@ -110,7 +115,10 @@ int main()
 	//uniformTest();
 
 	// colorFill
-	colorFill();
+	//colorFill();
+
+	// ourShader
+	ourShader();
 
 	// Terminate GLFW, clearing any resources allocated by GLFW.
 	glfwTerminate();
@@ -182,7 +190,7 @@ void uniformTest()
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
 	glEnableVertexAttribArray(0);
 
-	//4. 解绑 VBO VAO
+	// 4. 解绑 VBO VAO
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
@@ -219,7 +227,6 @@ void uniformTest()
 	glDeleteBuffers(1, &VBO);
 	
 }
-
 
 void colorFill()
 {
@@ -292,7 +299,7 @@ void colorFill()
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*) (3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
 
-	//4. 解绑 VBO VAO
+	// 4. 解绑 VBO VAO
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
@@ -330,6 +337,65 @@ void colorFill()
 	
 }
 
+void ourShader()
+{
+	// 绑定和编译我们的着色器程序
+	Shader ourShader("shader.vs", "shader.frag");
+
+	// Set up vertex data (and buffer(s)) and attribute pointers
+	GLfloat vertices[] = {
+        // Positions         // Colors
+        0.5f, -0.5f, 0.0f,   1.0f, 0.0f, 0.0f,  // Bottom Right
+       -0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,  // Bottom Left
+        0.0f,  0.5f, 0.0f,   0.0f, 0.0f, 1.0f   // Top 
+    };
+	GLuint VBO, VAO;
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+
+	// 1. 绑定VAO
+	glBindVertexArray(VAO);
+
+	// 2. 把我们的顶点数组复制到一个VBO中，提供给OpenGL使用
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    // 3. 设置顶点属性指针
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+	glEnableVertexAttribArray(0);
+
+	// 3. 设置颜色属性指针
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*) (3 * sizeof(GLfloat)));
+	glEnableVertexAttribArray(1);
+
+	//4. 解绑 VBO VAO
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
+
+	// Game loop
+	while(!glfwWindowShouldClose(window))
+	{
+		// Check if any events have been activiated (key pressed, mouse moved etc.) and call corresponding response functions
+		glfwPollEvents();
+
+		// Render
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		// Draw the triangle
+		ourShader.Use();
+		glBindVertexArray(VAO);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glBindVertexArray(0);
+
+		// Swap the screen buffers
+		glfwSwapBuffers(window);
+	}
+
+	// Properly de-allocate all resources once they've outlived their purpose
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+}
 
 // Is called whenever a key is pressed/realeased via GLFW
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)

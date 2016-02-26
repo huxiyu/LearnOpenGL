@@ -19,4 +19,17 @@
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Libraries\includes\learnopengl\shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shader.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="shader.frag">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
 </Project>
