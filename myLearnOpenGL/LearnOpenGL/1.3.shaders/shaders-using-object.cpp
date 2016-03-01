@@ -8,7 +8,7 @@
 #include <GLFW/glfw3.h>
 
 // 其他 头文件
-#include <learnopengl\shader.h>
+#include <learnopengl/shader.h>
 
 // Function prototypes
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
