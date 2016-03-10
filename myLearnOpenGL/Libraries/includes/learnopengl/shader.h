@@ -14,6 +14,9 @@ class Shader
 public:
 	// 程序ID
 	GLuint Program;
+
+	Shader(){}
+
 	// 构造器读取并创建Shader
 	Shader(const GLchar* vertexPath, const GLchar* fragmentPath)
 	{

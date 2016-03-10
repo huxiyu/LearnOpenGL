@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lesson46", "Lesson46\Lesson46.vcxproj", "{519A7C15-C932-4F24-AE97-D7AB1FDFAFEE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestWin32APIOpenGL", "TestWin32APIOpenGL\TestWin32APIOpenGL.vcxproj", "{F47F5A8C-038D-4849-90D1-8C08FF2BD567}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +15,10 @@ Global
 		{519A7C15-C932-4F24-AE97-D7AB1FDFAFEE}.Debug|Win32.Build.0 = Debug|Win32
 		{519A7C15-C932-4F24-AE97-D7AB1FDFAFEE}.Release|Win32.ActiveCfg = Release|Win32
 		{519A7C15-C932-4F24-AE97-D7AB1FDFAFEE}.Release|Win32.Build.0 = Release|Win32
+		{F47F5A8C-038D-4849-90D1-8C08FF2BD567}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F47F5A8C-038D-4849-90D1-8C08FF2BD567}.Debug|Win32.Build.0 = Debug|Win32
+		{F47F5A8C-038D-4849-90D1-8C08FF2BD567}.Release|Win32.ActiveCfg = Release|Win32
+		{F47F5A8C-038D-4849-90D1-8C08FF2BD567}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
