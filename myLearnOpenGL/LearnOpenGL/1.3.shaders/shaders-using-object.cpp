@@ -386,7 +386,7 @@ void ourShader()
 		ourShader.Use();
 
 		// Uniform offset
-		GLfloat offset = 0.5;
+		GLfloat offset = 0.0;
 		glUniform1f(glGetUniformLocation(ourShader.Program, "xOffset"), offset);
 
 		glBindVertexArray(VAO);
