@@ -4,6 +4,7 @@
 
 #include "logorenderer.h"
 #include <QtGui/qmatrix4x4.h>
+#include <QDateTime>
 
 /************************************************************************/
 /*																										    */
@@ -86,14 +87,33 @@ void LogoRenderer::initialize()
 
     m_fAngle = 0;
     m_fScale = 1;
+    m_fps = 0.0f;
 }
 
 /************************************************************************/
 /*																										    */
 /************************************************************************/
-
+// render model
+static qint64 lastTime = QDateTime::currentMSecsSinceEpoch();
+static int nbFrames = 0;
+static qint64 currentTime;
 void LogoRenderer::render()
 {
+    // Measure speed
+    currentTime = QDateTime::currentMSecsSinceEpoch();
+    nbFrames++;
+    if ( currentTime - lastTime >= 1000.0 ){ // If last prinf() was more than 1 sec ago
+        // printf and reset timer
+        m_fps = nbFrames;
+        //std::cout << 1000.0/double(nbFrames) << "  ms/frame  " << nbFrames << std::endl;
+        nbFrames = 0;
+        lastTime += 1000.0;
+        //        lastTime = currentTime;
+        if (m_fps > 50)
+        { qDebug() << "FPS::" << m_fps;}
+    }
+
+
     vao_vbo_glDrawArrays();
     //    vao_vbo_ebo_glDrawElements();
 
@@ -110,9 +130,9 @@ void LogoRenderer::vao_vbo_glDrawArrays_Init()
 {
     /* Set up vertex data (and buffer(s)) and attribute pointers */
     GLfloat vertices[] = {
-        -0.5f, -0.5f, 0.0f,
-        0.5f, -0.5f, 0.0f,
-        0.0f,  0.5f, 0.0f
+        -0.5f, 0.5f, 0.0f,
+        0.5f, 0.5f, 0.0f,
+        0.0f,  -0.5f, 0.0f
     };
 
     glGenVertexArrays(1, &VAO);
@@ -173,10 +193,10 @@ void LogoRenderer::vao_vbo_ebo_glDrawElements_Init()
 {
     /* Set up vertex data (and buffer(s)) and attribute pointers */
     GLfloat vertices[] = {
-        0.5f, 0.5f, 0.0f,   // 右上角
-        0.5f, -0.5f, 0.0f,  // 右下角
-        -0.5f, -0.5f, 0.0f, // 左下角
-        -0.5f, 0.5f, 0.0f   // 左上角
+        0.5f, -0.5f, 0.0f,   // 右上角
+        0.5f, 0.5f, 0.0f,  // 右下角
+        -0.5f, 0.5f, 0.0f, // 左下角
+        -0.5f, -0.5f, 0.0f   // 左上角
     };
 
     GLuint indices[] = { // 起始于0!
