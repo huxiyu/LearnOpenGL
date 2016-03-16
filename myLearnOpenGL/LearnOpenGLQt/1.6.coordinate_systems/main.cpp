@@ -38,62 +38,59 @@
 **
 ****************************************************************************/
 
-#ifndef THREADRENDERER_H
-#define THREADRENDERER_H
+#include <QtCore/QThread>
 
-#include <QQuickItem>
+#include <QGuiApplication>
 
-class RenderThread;
+#include <QtGui/private/qguiapplication_p.h>
+#include <QtGui/qpa/qplatformintegration.h>
 
-class ThreadRenderer : public QQuickItem
+#include <QtQuick/QQuickView>
+
+#include "threadrenderer.h"
+#include "openglcontexttool.h"
+
+int main(int argc, char **argv)
 {
-    Q_OBJECT
+    QGuiApplication app(argc, argv);
 
-public:
-    Q_PROPERTY(int viewPortWidth READ getViewPortWidth WRITE setViewPortWidth NOTIFY viewPortWidthChanged)
-    Q_PROPERTY(int viewPortHeight READ getViewPortHeight WRITE setViewPortHeight NOTIFY viewPortHeightChanged)
+    if (!QGuiApplicationPrivate::platform_integration->hasCapability(QPlatformIntegration::ThreadedOpenGL)) {
+        QQuickView view;
+        view.setSource(QUrl("qrc:///qml/error.qml"));
+        view.show();
+        return app.exec();
+    }
 
-public:
-    // start Q_INVOKABLE function
-    Q_INVOKABLE QString qmlTest(int num);
-    Q_INVOKABLE float getFPS(void);
-    // end Q_INVOKABLE function
+    qmlRegisterType<ThreadRenderer>("SceneGraphRendering", 1, 0, "Renderer");
+    int execReturn = 0;
 
+    {
+        QQuickView view;
 
-public:
-    ThreadRenderer();
+        // Rendering in a thread introduces a slightly more complicated cleanup
+        // so we ensure that no cleanup of graphics resources happen until the
+        // application is shutting down.
+        view.setPersistentOpenGLContext(true);
+        view.setPersistentSceneGraph(true);
 
-    static QList<QThread *> threads;
+        setContext(view);
+        qDebug() << "\n*** QSurfaceFormat from window surface ***";
+        printFormat(view.format());
 
-public Q_SLOTS:
-    void ready();
+        view.setResizeMode(QQuickView::SizeRootObjectToView);
+        view.setSource(QUrl("qrc:///qml/main.qml"));
+        view.show();
 
-protected:
-    QSGNode *updatePaintNode(QSGNode *, UpdatePaintNodeData *);
+        execReturn = app.exec();
+    }
 
-private:
-    RenderThread *m_renderThread;
+    // As the render threads make use of our QGuiApplication object
+    // to clean up gracefully, wait for them to finish before
+    // QGuiApp is taken off the heap.
+    foreach (QThread *t, ThreadRenderer::threads) {
+        t->wait();
+        delete t;
+    }
 
- //
-public:
-    // view port width
-    int m_viewPortWidth;
-    // view port height
-    int m_viewPortHeight;
-    // get view port width
-    int getViewPortWidth() const {return m_viewPortWidth;}
-    // set view port width
-    void setViewPortWidth( const int &viewPortWidth);
-    // get view port height
-    int getViewPortHeight() const {return m_viewPortHeight;}
-    // set view port height
-    void setViewPortHeight( const int &viewPortHeight);
-signals:
-    // notify when view change
-    void viewPortWidthChanged();
-    // notify when view change
-    void viewPortHeightChanged();
-
-};
-
-#endif
+    return execReturn;
+}

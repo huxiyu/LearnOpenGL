@@ -38,62 +38,12 @@
 **
 ****************************************************************************/
 
-#ifndef THREADRENDERER_H
-#define THREADRENDERER_H
+import QtQuick 2.0
 
-#include <QQuickItem>
-
-class RenderThread;
-
-class ThreadRenderer : public QQuickItem
-{
-    Q_OBJECT
-
-public:
-    Q_PROPERTY(int viewPortWidth READ getViewPortWidth WRITE setViewPortWidth NOTIFY viewPortWidthChanged)
-    Q_PROPERTY(int viewPortHeight READ getViewPortHeight WRITE setViewPortHeight NOTIFY viewPortHeightChanged)
-
-public:
-    // start Q_INVOKABLE function
-    Q_INVOKABLE QString qmlTest(int num);
-    Q_INVOKABLE float getFPS(void);
-    // end Q_INVOKABLE function
-
-
-public:
-    ThreadRenderer();
-
-    static QList<QThread *> threads;
-
-public Q_SLOTS:
-    void ready();
-
-protected:
-    QSGNode *updatePaintNode(QSGNode *, UpdatePaintNodeData *);
-
-private:
-    RenderThread *m_renderThread;
-
- //
-public:
-    // view port width
-    int m_viewPortWidth;
-    // view port height
-    int m_viewPortHeight;
-    // get view port width
-    int getViewPortWidth() const {return m_viewPortWidth;}
-    // set view port width
-    void setViewPortWidth( const int &viewPortWidth);
-    // get view port height
-    int getViewPortHeight() const {return m_viewPortHeight;}
-    // set view port height
-    void setViewPortHeight( const int &viewPortHeight);
-signals:
-    // notify when view change
-    void viewPortWidthChanged();
-    // notify when view change
-    void viewPortHeightChanged();
-
-};
-
-#endif
+Text {
+    width: 400
+    height: 100
+    text: 'Platform does not support threaded OpenGL needed by this example.'
+    verticalAlignment: Text.AlignVCenter
+    horizontalAlignment: Text.AlignHCenter
+}

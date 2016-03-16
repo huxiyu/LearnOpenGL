@@ -46,37 +46,9 @@ Item {
     width: 800
     height: 600
 
-
-    focus: true
-    Keys.enabled: true
-    Keys.onEscapePressed:
-    {
-        Qt.quit()
-    }
-    Keys.onPressed:
-    {
-        console.log("key press="+event.key)
-        switch(event.key)
-        {
-        case Qt.Key_0:
-            var num = renderer.qmlTest(123)
-            console.log("qml num = "+num)
-            break
-        case Qt.Key_1:
-            console.log("qml FPS = "+renderer.getFPS())
-            break
-        default:
-            return
-        }
-        event.accepted = true
-    }
-
-
     Renderer {
         id: renderer
         anchors.fill: parent
-        viewPortWidth: parent.width
-        viewPortHeight: parent.height
 
         // The transform is just to show something interesting..
 //        transform: [

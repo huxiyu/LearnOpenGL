@@ -13,8 +13,9 @@
 
 void LogoRenderer::initialize()
 {
+    printContext(QOpenGLContext::currentContext());
+
     initializeOpenGLFunctions();
-    printContext();
 
     textureTest_Init();
 
@@ -26,6 +27,11 @@ void LogoRenderer::initialize()
 /************************************************************************/
 /*																										    */
 /************************************************************************/
+
+void LogoRenderer::resize(int width, int height)
+{
+    glViewport(0, 0, width, height);
+}
 
 /************************************************************************/
 /*																										    */
@@ -45,10 +51,10 @@ void LogoRenderer::render()
         //std::cout << 1000.0/double(nbFrames) << "  ms/frame  " << nbFrames << std::endl;
         nbFrames = 0;
         lastTime += 1000.0;
-//     lastTime = currentTime;
+        //     lastTime = currentTime;
         if (m_fps > 50)
         {
-//            qDebug() << "FPS::" << m_fps;
+            //            qDebug() << "FPS::" << m_fps;
         }
     }
 
@@ -184,8 +190,9 @@ void LogoRenderer::textureTest()
 
     // transform
     QMatrix4x4 transform;
-//    transform.translate( 0.5f, 0.5f, 0.0f);
-    transform.rotate(-m_fAngle, 0.0f, 0.0f, 1.0f); // 左手坐标系，旋转要取负
+    //    transform.perspective(45.0f, );
+    //    transform.translate( 0.5f, 0.5f, 0.0f);
+        transform.rotate(-m_fAngle, 0.0f, 0.0f, 1.0f);
 
     // Get matrix's uniform location and set matrix
     GLint transformLoc = glGetUniformLocation(m_nProgram, "transform");
@@ -323,19 +330,8 @@ bool LogoRenderer::createShader(GLuint& program, QString vertexPath, QString fra
     return exception;
 }
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
 
-QString LogoRenderer::qmlTest(int num)
-{
-    qDebug("logorenderer num = %d", num);
-    return "Hello, qmlTest";
-}
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
 
 
 

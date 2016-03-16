@@ -19,7 +19,7 @@ GLuint VAO, VBO;
 void LogoRenderer::initialize()
 {
     initializeOpenGLFunctions();
-    printContext();
+//    printContext();
 
     ourShaderTest_Init();
 

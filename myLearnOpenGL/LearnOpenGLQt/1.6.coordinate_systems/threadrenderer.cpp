@@ -52,8 +52,6 @@
 #include <QtQuick/QQuickWindow>
 #include <qsgsimpletexturenode.h>
 
-
-
 QList<QThread *> ThreadRenderer::threads;
 
 /*
@@ -92,8 +90,9 @@ public slots:
             m_displayFbo = new QOpenGLFramebufferObject(m_size, format);
             m_logoRenderer = new LogoRenderer();
             m_logoRenderer->initialize();
+            m_logoRenderer->resize(m_size.width(), m_size.height());
+            //            context->functions()->glViewport(0, 0, m_size.width(), m_size.height());
         }
-        context->functions()->glViewport(0, 0, m_size.width(), m_size.height());
 
         m_renderFbo->bind();
         m_logoRenderer->render();
@@ -130,7 +129,7 @@ public slots:
 signals:
     void textureReady(int id, const QSize &size);
 
-public:
+private:
     QOpenGLFramebufferObject *m_renderFbo;
     QOpenGLFramebufferObject *m_displayFbo;
 
@@ -247,7 +246,23 @@ QSGNode *ThreadRenderer::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *
         // and makeCurrent down below while setting up our own context.
         current->doneCurrent();
 
+//        qDebug() << "\n----- OpenGL Context -----";
+//        QSurfaceFormat fmt;
+//        fmt.setVersion(versions[11].major, versions[11].minor); // idx = 11
+//        fmt.setProfile(profiles[1].profile);  // i = 1
+//        fmt.setRenderableType(renderables[1].renderable); // i = 1
+        // set depth buffer size.
+//        fmt.setDepthBufferSize(32);
+//        fmt.setStencilBufferSize(8);
+//        fmt.setSamples(0);
+//        fmt.setRedBufferSize(0);
+//        fmt.setBlueBufferSize(0);
+//        fmt.setGreenBufferSize(8);
+//        fmt.setAlphaBufferSize(8);
+//        fmt.setSwapInterval(1);
+
         m_renderThread->context = new QOpenGLContext();
+//        m_renderThread->context->setFormat(fmt);
         m_renderThread->context->setFormat(current->format());
         m_renderThread->context->setShareContext(current);
         m_renderThread->context->create();
@@ -289,58 +304,5 @@ QSGNode *ThreadRenderer::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *
 
     return node;
 }
-
-
-//start Q_INVOKABLE function
-QString ThreadRenderer::qmlTest(int num)
-{
-    if (this->m_renderThread->m_logoRenderer != NULL)
-    {
-        return this->m_renderThread->m_logoRenderer->qmlTest(num);
-    }
-}
-
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
-float ThreadRenderer::getFPS()
-{
-    if (this->m_renderThread->m_logoRenderer != NULL)
-    {
-        return this->m_renderThread->m_logoRenderer->m_fps;
-    }
-}
-
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
-// set view port
-void ThreadRenderer::setViewPortWidth(const int &viewPortWidth)
-{
-    if (this->m_renderThread->m_logoRenderer != NULL ) {
-        this->m_renderThread->m_size.setWidth(viewPortWidth);
-        this->m_renderThread->m_size.setHeight(this->m_renderThread->m_size.height());
-    };
-    emit viewPortWidthChanged();
-}
-
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
-// set view port
-void ThreadRenderer::setViewPortHeight(const int &viewPortHeight)
-{
-    if (this->m_renderThread->m_logoRenderer != NULL ) {
-        this->m_renderThread->m_size.setWidth(this->m_renderThread->m_size.width());
-        this->m_renderThread->m_size.setHeight(viewPortHeight);
-    }
-    emit viewPortHeightChanged();
-}
-
-//end Q_INVOKABLE function
-
 
 #include "threadrenderer.moc"

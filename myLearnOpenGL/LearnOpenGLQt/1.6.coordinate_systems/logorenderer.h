@@ -24,13 +24,15 @@ public:
 
     void render();
     void initialize();
+    void resize(int width, int height);
     bool createShader(GLuint& program, QString vertexPath, QString fragmentPath);
 
-// Q_INVOKABLE function
-public:
-    QString qmlTest(int num);
+private:
+    QOpenGLContext* m_pContext;
 
-public:
+    int m_nScreenWidth;
+    int m_nScreenHeight;
+
     float m_fps;
 
     qreal   m_fAngle;
@@ -49,6 +51,7 @@ public:
     // VAO VBO glDrawArrays
     void textureTest_Init();
     void textureTest();
+
 };
 
 /************************************************************************/
